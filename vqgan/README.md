@@ -1,19 +1,34 @@
 # VQGAN
 
-# Docker container
+## Copy files
 
-## Build
+```bash
+mkdir content
+sudo cp -r ~/git/VQGAN-CLIP-Docker/models/ content/
+sudo cp -r ~/git/VQGAN-CLIP-Docker/scripts/ content/
+sudo cp -r ~/git/VQGAN-CLIP-Docker/configs/ content/
+sudo cp -r ~/git/VQGAN-CLIP-Docker/core/ content/
+sudo chmod +r -R content/
+```
+Check size
+
+```bash
+sudo du -hc --max-depth=1 content
+```
+## Docker container
+
+### Build
 
 ```bash
 docker build . -t registry.dataunion.app/dataunion-vqgan:latest
 ```
-## Push
+### Push
 
 ```bash
 docker image push registry.dataunion.app/dataunion-vqgan:latest
 ```
 
-## Run locally
+### Run locally
 
 ```bash
 docker run --rm -it --entrypoint "python" registry.dataunion.app/dataunion-vqgan /app/algorithm.py
