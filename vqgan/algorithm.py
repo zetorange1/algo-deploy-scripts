@@ -56,7 +56,7 @@ logging.info("Writing config at path %s", config_path)
 current_config = json.load(open(config_path, "r"))
 
 with open(config_path, "w") as outfile:
-    current_config["prompts"] = custom_parameters["prompts"]
+    current_config["prompts"] = custom_parameters["parameters"]["prompts"]
     json.dump(current_config, outfile, indent=4)
 
 logging.info("Starting subprocess")
