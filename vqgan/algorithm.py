@@ -3,6 +3,10 @@ import json
 import argparse
 import sys
 import logging
+import subprocess
+import shutil
+import glob
+import time
 
 log_format = "%(levelname)s %(asctime)s - %(message)s"
 
@@ -15,7 +19,7 @@ logging.basicConfig(
 
 logger = logging.getLogger()
 
-default_config_path = os.path.join("configs", "docker.json")
+default_config_path = os.path.join(os.sep, "configs", "docker.json")
 default_custom_parameters_path = os.path.join(
     os.sep, "data", "transformations", "algorithm"
 )
@@ -48,7 +52,30 @@ with open(custom_parameters_path, "r") as f:
     custom_parameters = json.load(f)
 
 logging.info("Writing config at path %s", config_path)
+
+current_config = json.load(open(config_path, "r"))
+
 with open(config_path, "w") as outfile:
-    json.dump(custom_parameters, outfile, indent=4)
+    current_config["prompts"] = custom_parameters["prompts"]
+    json.dump(current_config, outfile, indent=4)
+
+logging.info("Starting subprocess")
+start_time = time.time()
+output_subprocess = open("/outputs/subprocess.txt", "w")
+subprocess.run(
+    ["python", "-m", "scripts.generate", "-c", "/configs/docker.json"],
+    stdout=output_subprocess,
+)
+logging.info("Completed subprocess in %ss", time.time() - start_time)
+
+logging.info("Generating output")
+
+output_dir = os.path.join(os.sep, "data", "outputs")
+
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+result_file = glob.glob("/outputs/*.png")[0]
+shutil.copyfile(result_file, os.path.join(output_dir, "result"))
 
 logging.info("Finishing algorithm")
