@@ -61,6 +61,10 @@ with open(config_path, "w") as outfile:
 
 logging.info("Starting subprocess")
 start_time = time.time()
+
+if not os.path.exists(os.path.join(os.sep, "outputs")):
+    os.makedirs(os.path.join(os.sep, "outputs"))
+
 output_subprocess = open("/outputs/subprocess.txt", "w")
 subprocess.run(
     ["python", "-m", "scripts.generate", "-c", "/configs/docker.json"],

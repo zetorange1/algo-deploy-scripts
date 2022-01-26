@@ -33,4 +33,6 @@ docker image push registry.dataunion.app/dataunion-vqgan:latest
 
 ```bash
 docker run --rm -it --entrypoint "python" registry.dataunion.app/dataunion-vqgan /app/algorithm.py
+
+docker run --rm -it -v $PWD/data:/data --entrypoint "python" registry.dataunion.app/dataunion-vqgan
 ```
