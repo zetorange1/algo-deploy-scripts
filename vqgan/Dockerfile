@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY ./VQGAN-CLIP-Docker /app/VQGAN-CLIP-Docker
 
-# COPY ./content/models /models
+COPY ./content/models /app/VQGAN-CLIP-Docker/models
 # COPY ./content/configs /configs
 # COPY ./content/core /app/core
 # COPY ./content/scripts /app/scripts
