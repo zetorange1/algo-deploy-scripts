@@ -1,0 +1,3 @@
+[submodule "vqgan/VQGAN-CLIP-Docker"]
+	path = vqgan/VQGAN-CLIP-Docker
+	url = https://github.com/kcosta42/VQGAN-CLIP-Docker.git
