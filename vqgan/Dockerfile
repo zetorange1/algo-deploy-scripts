@@ -4,12 +4,14 @@ ENV DEVICE=cuda
 
 WORKDIR /app
 
-COPY ./content/models /models
-COPY ./content/configs /configs
-COPY ./content/core /app/core
-COPY ./content/scripts /app/scripts
+COPY ./VQGAN-CLIP-Docker /app/VQGAN-CLIP-Docker
 
-COPY ./requirements.txt /requirements.txt
-RUN python -m pip install -r /requirements.txt
+# COPY ./content/models /models
+# COPY ./content/configs /configs
+# COPY ./content/core /app/core
+# COPY ./content/scripts /app/scripts
+
+# COPY ./requirements.txt /requirements.txt
+RUN python -m pip install -r /app/VQGAN-CLIP-Docker/requirements.txt
 
 COPY algorithm.py /app/algorithm.py
