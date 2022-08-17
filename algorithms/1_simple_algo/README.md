@@ -30,3 +30,10 @@ kubectl run 1-simple-algorithm -i --tty --rm \
 -n ocean-compute \
 -- bash
 ```
+
+## Published DIDs:
+
+```
+dataset_did = "did:op:9f5591a01c122b6d3bcd61b80216bb539aac6882372e2c95de895cdebeaa1466"
+algo_did = "did:op:fb8d24aff3cdf29dc9fbd15d31a27cb0e06de7f345cd8543fc67269f612c0c3e"
+```
