@@ -1,6 +1,6 @@
 # algo-deploy-scripts
-Scripts to deploy algorithms and logic to be part of our setup
 
+Scripts to deploy algorithms and logic to be part of our setup
 
 ```bash
 docker run --name jupyter -p 8888:8888 --user root -e GRANT_SUDO=yes -e JUPYTER_ENABLE_LAB=yes -v ${PWD}:/home/jovyan/work --network=host jupyter/minimal-notebook:python-3.8.8
@@ -8,7 +8,7 @@ docker run --name jupyter -p 8888:8888 --user root -e GRANT_SUDO=yes -e JUPYTER_
 
 ```bash
 sudo apt-get update
-sudo apt-get install gcc curl -y 
+sudo apt-get install gcc curl -y
 pip install wheel ocean-lib numpy matplotlib python-dotenv
 ```
 
@@ -19,6 +19,7 @@ pip install wheel ocean-lib numpy matplotlib python-dotenv
 ```bash
 docker build . -t registry.dataunion.app/dataunion-algo:latest
 ```
+
 ## Push
 
 ```bash
@@ -29,4 +30,10 @@ docker image push registry.dataunion.app/dataunion-algo:latest
 
 ```bash
 docker run --rm -it --entrypoint "python" registry.dataunion.app/dataunion-algo /app/algorithm.py
+```
+
+## Deploy scripts
+
+```bash
+pip install ocean-lib python-dotenv
 ```

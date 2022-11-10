@@ -1,2 +1,4 @@
 .env
 .ipynb_checkpoints/
+venv/
+deploy_scripts/__pycache__
