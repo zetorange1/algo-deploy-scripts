@@ -66,6 +66,23 @@ def get_input_and_calculate_result():
                     if file == "data.json":
                         data = f.read()
                         json_data = json.loads(data)
+                        logging.info(
+                            "Number of items in json array [%s]", len(json_data)
+                        )
+                        """
+                        json_data contains the mapping between file id and the original file name.
+                        Sample contents of json:
+                            [
+                                {
+                                        "id": "cPoKigPSwsuznTH",
+                                        "original_file_name": "x32.nn.txt"
+                                },
+                                {
+                                        "id": "dkbTGAICwVLOAXm",
+                                        "original_file_name": "a07.nn.txt"
+                                }
+                            ]
+                        """
 
                     else:
                         count = 0
