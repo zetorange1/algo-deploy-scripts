@@ -28,11 +28,18 @@ with open(os.path.join(output_dir, "result"), "w") as f:
 
 def read_algorithm_custom_input():
     custom_path = os.path.join(os.sep, "data", "inputs", "algoCustomData.json")
+
+    dids = os.getenv("DIDS", None)
+    dids = json.loads(dids)
+    for did in dids:
+        custom_path = f"data/inputs/{did}/0"
+        break
+
     if os.path.exists(custom_path):
         with open(custom_path, "r") as file:
             return json.load(file)
     else:
-        print(f"No such file: {custom_path}")
+        logging.info(f"No such file: {custom_path}")
 
 
 algo_input = read_algorithm_custom_input()
